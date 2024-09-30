@@ -2,7 +2,7 @@ import React from 'react'
 
 function BannerInsolenzia() {
   return (
-    <section>
+    <section className="BannerInso">
       <a href="/">
         <img src="/arquivos/Logo-Tall-blanco.svg" alt="chtLogo" />
       </a>
