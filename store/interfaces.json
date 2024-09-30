@@ -1,0 +1,6 @@
+{
+  "menu-switch-banner": {
+    "component": "HeaderBanner",
+    "render": "client"
+  }
+}
