@@ -4,13 +4,17 @@ function BannerInsolenzia() {
   return (
     <section className="BannerInso">
       <a href="/">
-        <img src="/arquivos/Logo-Tall-blanco.svg" alt="chtLogo" />
+        <img src="/arquivos/tall2oct.png" alt="chtLogo" style={{ width: 45 }} />
       </a>
       <a href="/cachet">
-        <img src="/arquivos/Logo-Cachet-blanco.svg" alt="cachetLogo" />
+        <img
+          src="/arquivos/cachet2oct.png"
+          alt="cachetLogo"
+          style={{ width: 45 }}
+        />
       </a>
       <a href="/cht">
-        <img src="/arquivos/Logo-CHT-blanco.png" alt="chtLogo" />
+        <img src="/arquivos/cht2oct.png" alt="chtLogo" style={{ width: 45 }} />
       </a>
     </section>
   )

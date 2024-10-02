@@ -4,13 +4,21 @@ function BannerMain() {
   return (
     <section>
       <a href="/cachet">
-        <img src="/arquivos/Logo-Cachet-blanco.svg" alt="cachetLogo" />
+        <img
+          src="/arquivos/cachet2oct.png"
+          alt="cachetLogo"
+          style={{ width: 45 }}
+        />
       </a>
       <a href="/cht">
-        <img src="/arquivos/Logo-CHT-blanco.png" alt="chtLogo" />
+        <img src="/arquivos/cht2oct.png" alt="chtLogo" style={{ width: 45 }} />
       </a>
       <a href="/insolenzia">
-        <img src="/arquivos/Logo-Insolenzia-blanco.png" alt="insolenziaLogo" />
+        <img
+          src="/arquivos/insolenzia2oct.png"
+          alt="insolenziaLogo"
+          style={{ width: 100 }}
+        />
       </a>
     </section>
   )

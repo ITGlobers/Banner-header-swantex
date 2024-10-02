@@ -4,13 +4,21 @@ function BannerCachet() {
   return (
     <section>
       <a href="/">
-        <img src="/arquivos/Logo-Tall-blanco.svg" alt="tallLogo" />
+        <img
+          src="/arquivos/tall2oct.png"
+          alt="tallLogo"
+          style={{ width: 45 }}
+        />
       </a>
       <a href="/cht">
-        <img src="/arquivos/Logo-CHT-blanco.png" alt="chtLogo" />
+        <img src="/arquivos/cht2oct.png" alt="chtLogo" style={{ width: 45 }} />
       </a>
       <a href="/insolenzia">
-        <img src="/arquivos/Logo-Insolenzia-blanco.png" alt="insolenziaLogo" />
+        <img
+          src="/arquivos/insolenzia2oct.png"
+          alt="insolenziaLogo"
+          style={{ width: 100 }}
+        />
       </a>
     </section>
   )
