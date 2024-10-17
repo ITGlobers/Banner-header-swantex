@@ -1,0 +1,37 @@
+.containerWhatsapp {
+    position: fixed;
+    display: flex;
+    bottom: .5rem;
+    right: 1.5rem;
+    width: 47.25px;
+    height: 47.25px;
+    z-index: 1;
+    background-color: #FFFFFF;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 24px;
+  }
+  
+  .containerLink {
+    display: flex;
+    text-decoration: none;
+    margin-left: 13px;
+    gap: 18.17px;
+    align-items: center;
+  }
+  
+  .containerText {
+    font-size: 14.15px;
+    line-height: 15.57px;
+    font-family: 'Muller';
+    font-weight: 400;
+    color: #3C3C3C;
+  }
+  
+  .containerIcon {
+    height: 100%;
+    width: 20px;
+    padding-top: 0.25em;
+    padding-bottom: 0.32em;
+    position: relative;
+    text-align: center;
+  }

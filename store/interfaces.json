@@ -2,5 +2,9 @@
   "menu-switch-banner": {
     "component": "HeaderBanner",
     "render": "client"
+  },
+  "WhatsappButton": {
+    "component": "WhatsappButton",
+    "render": "client"
   }
 }
