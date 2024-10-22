@@ -65,9 +65,10 @@ WhatsappButton.propTypes = {
 WhatsappButton.defaultProps = {
   logo: '/arquivos/WhatsappBtn.svg',
   text: '',
-  phone: '3126500854',
-  message:
-    'Hola 🤩, te comunicas con TALL Medias & Shapewear, cuéntanos en qué podemos ayudarte.',
+  phone: '573126500854',
+  message: encodeURIComponent(
+    'Hola te comunicas con TALL Medias & Shapewear, cuéntanos en qué podemos ayudarte.'
+  ),
   width: 32.05,
   height: 31.85,
 }
