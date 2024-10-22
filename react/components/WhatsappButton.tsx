@@ -65,9 +65,9 @@ WhatsappButton.propTypes = {
 WhatsappButton.defaultProps = {
   logo: '/arquivos/WhatsappBtn.svg',
   text: '',
-  phone: '3004507575',
+  phone: '3126500854',
   message:
-    'Estás comunicándote con VTEX University, por favor ingresa tu duda.',
+    'Hola 🤩, te comunicas con TALL Medias & Shapewear, cuéntanos en qué podemos ayudarte.',
   width: 32.05,
   height: 31.85,
 }
