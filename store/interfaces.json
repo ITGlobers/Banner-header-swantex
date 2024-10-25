@@ -6,5 +6,10 @@
   "WhatsappButton": {
     "component": "WhatsappButton",
     "render": "client"
+  },
+  "ComplementHF": {
+    "component": "ComplementHF",
+    "render": "client",
+    "composition": "children"
   }
 }
