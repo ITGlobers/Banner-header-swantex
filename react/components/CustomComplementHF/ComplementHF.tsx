@@ -22,7 +22,7 @@ function ComplementHF({ children }: any) {
   } else if (route.startsWith('/insolenzia')) {
     Component = insolenzia
   } else {
-    Component = tall // Ruta por defecto si no coincide con ninguna
+    Component = tall
   }
 
   let productComponent
@@ -34,7 +34,7 @@ function ComplementHF({ children }: any) {
 
     case 'CACHET':
       productComponent = cachet
-      break // Agregar break aquí
+      break
 
     case 'INSOLENZIA':
       productComponent = insolenzia

@@ -2308,7 +2308,7 @@ csstype@^3.0.2:
   version "0.0.0"
   dependencies:
     apollo-client "^2.6.8"
-    custom-frontend-aplications "file:../../../../../../AppData/Local/Yarn/Cache/v6/npm-custom-frontend-aplications-0.0.0-d696a074-4621-41a2-9aa5-5efddf78bed6-1727903040314/node_modules/custom-frontend-aplications"
+    custom-frontend-aplications "file:../../../../../../AppData/Local/Yarn/Cache/v6/npm-custom-frontend-aplications-0.0.0-f99f4d47-3781-4450-9ca4-790baef8bfbb-1730155705692/node_modules/custom-frontend-aplications"
     react "^16.12.0"
     react-apollo "^3.1.3"
     react-dom "^16.12.0"
