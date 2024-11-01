@@ -11,5 +11,10 @@
     "component": "ComplementHF",
     "render": "client",
     "composition": "children"
+  },
+  "Navbar-custom": {
+    "component": "NavbarCustom",
+    "render": "client",
+    "composition": "children"
   }
 }
