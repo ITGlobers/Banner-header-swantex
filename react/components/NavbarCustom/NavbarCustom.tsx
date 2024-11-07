@@ -1,34 +1,112 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { useCssHandles } from "vtex.css-handles"
+import { getCategories } from "./services/Categories";
+import { Props, Items, OptionsToShow } from "./types";
+import IconMenu from "./components/IconMenu";
+import IconClose from "./components/IconClose";
 
+const NavbarCustom = ({ brand, children } : Props) => {
+  const [isActive, setIsActive] = useState<boolean>(false);
+  const [options, setOptions] = useState<any>([])
+  const [currentBrand, setCurrentBrand] = useState(brand)
+  const [currentCategory, setCurrentCategory] = useState<any>()
+  const [secondOptions, setSecondOptions] = useState([])
 
-
-const NavbarCustom = () => {
+  useEffect(() => {
+    getCategories().then((items) => {
+      const categories = items.find((item : Items) =>  item.name == currentBrand)
+      setOptions(categories.children)
+      setCurrentBrand(categories.name)
+    } )
+  }, [currentBrand]);
 
   const CSS_HANDLES = [
-    "navbar-container"
+    "navbar-container",
+    "navbar-item",
+    "navbar-item__button",
+    "navbar-slider__open",
+    "navbar-slider__close",
+    "navbar-menu-container",
+    "navbar-menu-layout",
+    "navbar-menu-categories",
+    "navbar-menu-graphic-section",
+    "navbar-menu__close-button",
+    "navbar-item__anchor",
+    "close-icon",
+    "navbar-menu-showAll"
   ] as const
+
   const handles = useCssHandles(CSS_HANDLES)
 
+  const handler = (state : boolean, currentItem: number) => {
+    const optionsToShow = options.filter((items: OptionsToShow) =>
+      items.id === currentItem && items.hasChildren === true
+    )
+    const showAllOption = options.filter((items: { id: any; }) => items.id === currentItem)
+    setIsActive(state)
+    setCurrentCategory(showAllOption[0])
+    setSecondOptions(optionsToShow[0].children)
+  }
+
   return(
-    <div className={handles["navbar-container"]}>
-      <div>
-        Deportivos
+    <>
+      {console.log("options =>", options)}
+      {console.log(secondOptions)}
+      <div className={handles["navbar-container"]}>
+        {options.map((option: any) =>
+          <div className={handles["navbar-item"]} key={option.id}>
+            {option.hasChildren === true ?
+              <button className={handles["navbar-item__button"]} onMouseEnter={() => handler(true, option.id)}>
+                {option.name} <IconMenu/>
+              </button> :
+              <a
+              className={handles["navbar-item__anchor"]}
+              onMouseEnter={() => {handler(false, option.id) }}
+              key={option.id}
+              href={option.url}
+              >{option.name}</a>
+            }
+          </div>
+        )}
       </div>
-      <div>
-        Deportivos
+      <div className={isActive ? handles["navbar-slider__open"] : handles["navbar-slider__close"]}>
+        <div className={handles["navbar-menu-container"]}>
+          <div className={handles["navbar-menu__close-button"]}>
+            <button className={handles["close-icon"]} onClick={() => handler(false, 0)} ><IconClose/></button>
+          </div>
+          <div className={handles["navbar-menu-layout"]}>
+            <div className={handles["navbar-menu-categories"]}>
+              {secondOptions.map((option: any) =>
+                <div key={option.id}>
+                  <a href={option.url}>{option.name}</a>
+                </div>
+              )}
+              <div>
+                <a className={handles["navbar-menu-showAll"]} href={currentCategory?.url}>{`Ver todos ${currentCategory?.name}`}</a>
+              </div>
+            </div>
+            <div className={handles["navbar-menu-graphic-section"]}>
+                { children }
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        Deportivos
-      </div>
-      <div>
-        Deportivos
-      </div>
-      <div>
-        Deportivos
-      </div>
-    </div>
+    </>
+
   )
 }
 
-export default NavbarCustom
+
+NavbarCustom.schema = {
+  title: "Menu",
+  type: "object",
+  properties: {
+      brand: {
+        title: "Marca",
+        type: "string",
+        description: "Esta propiedad no debe ser movidad ya que determina el menu por cada marca"
+      }
+  }
+}
+
+export default NavbarCustom;

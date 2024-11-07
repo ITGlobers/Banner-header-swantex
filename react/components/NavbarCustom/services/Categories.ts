@@ -7,8 +7,8 @@ export const getCategories = async () : Promise<any> => {
     headers: {
       "Accept": "application/json",
       "Content-Type": "application/json",
-      "X-VTEX-API-AppKey": "vtexappkey-gabrica-KPQIRJ",
-      "X-VTEX-API-AppToken": "JZHVGMBSISVPBEMJSIPLREFIDIBXJDRHLCYIKPLMGPRNCVBWUNGWUNQJURBBPEJRWWIYOKJUNTJNWIQELWLSDDOVZZYQQEKLAPDHIJYZRSKCLDMBNOUKRFOFPBIYBHJY"
+      "X-VTEX-API-AppKey": "vtexappkey-swantex-OBRJPN",
+      "X-VTEX-API-AppToken": "SMESLDVQQWDYVNFCROTPYIXXCVUIIXDPZSKZXQRCOYSSAGPMEFZAEJGLQBFORSYUYKACLZMUHUAILPGCDGGYGCWHAHLEXVATRMNIBMWAWICBKJCEEQYPPTIUFPFZBVCP"
     }
   });
   return await data.json();
