@@ -1,6 +1,6 @@
 import React from "react"
 
-const Images = () => {
+const ImagesCategory = () => {
   return(
     <>
       Images
@@ -8,7 +8,7 @@ const Images = () => {
   )
 }
 
-Images.schema ={
+ImagesCategory.schema ={
   image: {
     title: 'Image Prop',
     type: 'object',
@@ -36,4 +36,4 @@ Images.schema ={
   }
 }
 
-export default Images
+export default ImagesCategory

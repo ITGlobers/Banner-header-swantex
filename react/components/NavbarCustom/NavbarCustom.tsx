@@ -33,7 +33,10 @@ const NavbarCustom = ({ brand, children } : Props) => {
     "navbar-menu__close-button",
     "navbar-item__anchor",
     "close-icon",
-    "navbar-menu-showAll"
+    "navbar-menu-showAll",
+    "navbar-menu-image-container",
+    "menu-image-title",
+    "menu-image-description"
   ] as const
 
   const handles = useCssHandles(CSS_HANDLES)
@@ -56,7 +59,7 @@ const NavbarCustom = ({ brand, children } : Props) => {
         {options.map((option: any) =>
           <div className={handles["navbar-item"]} key={option.id}>
             {option.hasChildren === true ?
-              <button className={handles["navbar-item__button"]} onMouseEnter={() => handler(true, option.id)}>
+              <button className={handles["navbar-item__button"]} onClick={() => handler(true, option.id)} onMouseEnter={() => handler(true, option.id)}>
                 {option.name} <IconMenu/>
               </button> :
               <a
@@ -69,7 +72,7 @@ const NavbarCustom = ({ brand, children } : Props) => {
           </div>
         )}
       </div>
-      <div className={isActive ? handles["navbar-slider__open"] : handles["navbar-slider__close"]}>
+      <div className={isActive ? handles["navbar-slider__open"] : handles["navbar-slider__close"]} onMouseLeave={() => handler(false, 0)} >
         <div className={handles["navbar-menu-container"]}>
           <div className={handles["navbar-menu__close-button"]}>
             <button className={handles["close-icon"]} onClick={() => handler(false, 0)} ><IconClose/></button>
@@ -87,6 +90,20 @@ const NavbarCustom = ({ brand, children } : Props) => {
             </div>
             <div className={handles["navbar-menu-graphic-section"]}>
                 { children }
+                <div className={handles["navbar-menu-image-container"]}>
+                  <a href="/">
+                    <img src="https://swantex.vtexassets.com/arquivos/1-IMAGEN-CATEGORIA-DESPLEGABLE.jpg" alt="ImageExample" />
+                    <p className={handles["menu-image-title"]}>Tobillera</p>
+                    <p className={handles["menu-image-description"]}>Suave y confortable tobillera Seducción  fabricada en tejido de punto elástico</p>
+                  </a>
+                </div>
+                <div className={handles["navbar-menu-image-container"]}>
+                  <a href="/">
+                    <img src="https://swantex.vtexassets.com/arquivos/2-IMAGEN-CATEGORIA-DESPLEGABLE.jpg" alt="ImageExample" />
+                    <p className={handles["menu-image-title"]}>Tobillera</p>
+                    <p className={handles["menu-image-description"]}>Suave y confortable tobillera Seducción  fabricada en tejido de punto elástico</p>
+                  </a>
+                </div>
             </div>
           </div>
         </div>
@@ -105,6 +122,92 @@ NavbarCustom.schema = {
         title: "Marca",
         type: "string",
         description: "Esta propiedad no debe ser movidad ya que determina el menu por cada marca"
+      },
+      graphicSection: {
+        title: 'Seleccion de imagenes por categoria',
+        type: 'object',
+        properties: {
+          firstImage: {
+            title: 'Imagen de seccion',
+            type: 'object',
+            properties: {
+              activeImage:{
+                type: 'boolean',
+                title: 'Activa la imagen 1',
+                default: false,
+              },
+              category:{
+                type: 'string',
+                title: 'Categoria',
+                description: 'Selecciona la categoria correspondiente',
+                enum: ['red', 'blue', 'black']
+              },
+              title: {
+                type: 'string',
+                title: 'Titulo',
+                description: 'Esta desplega el titulo debajo la imagen',
+              },
+              description: {
+                type: 'string',
+                title: 'Descripcion',
+                description: 'Pequeño parrafo de descripcion debajo la imagen',
+              },
+              url:{
+                type: 'string',
+                title: 'URL',
+                description: 'URL opcional (Deshabilita el enlace por defecto)',
+              },
+              image :{
+                title: 'Imagen',
+                default: '',
+                type: 'string',
+                widget: {
+                    "ui:widget": "image-uploader"
+                }
+              },
+            }
+          },
+          secondImage: {
+            title: 'Imagen de seccion',
+            type: 'object',
+            properties: {
+              activeImage:{
+                type: 'boolean',
+                title: 'Activa la imagen 1',
+                default: false,
+              },
+              category:{
+                type: 'string',
+                title: 'Categoria',
+                description: 'Selecciona la categoria correspondiente',
+                enum: ['red', 'blue', 'black']
+              },
+              title: {
+                type: 'string',
+                title: 'Titulo',
+                description: 'Esta desplega el titulo debajo la imagen',
+              },
+              description: {
+                type: 'string',
+                title: 'Descripcion',
+                description: 'Pequeño parrafo de descripcion debajo la imagen',
+              },
+              url:{
+                type: 'string',
+                title: 'URL',
+                description: 'URL opcional (Deshabilita el enlace por defecto)',
+              },
+              image :{
+                title: 'Imagen',
+                default: '',
+                type: 'string',
+                widget: {
+                    "ui:widget": "image-uploader"
+                }
+              },
+            }
+          }
+        }
       }
   }
 }
