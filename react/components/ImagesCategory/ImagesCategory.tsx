@@ -4,10 +4,23 @@ import Image from "./components/Images";
 import { PropsCategory } from "./types";
 
 
-const ImagesCategory = ({ category, firstImage, secondImage } : PropsCategory) => {
+const ImagesCategory = ({ brand, category, firstImage, secondImage } : PropsCategory) => {
 
   const categoryOnSelected = useContext(categorySelected);
   const [ currentCategory ] = useState<any>(category)
+
+  const normalizeWord = (word: string) => {
+    let wordTrimmedAndLowerCase = word.trim().toLowerCase()
+    let changewordN = wordTrimmedAndLowerCase.replace(/ñ/g, 'n')
+    let removingSpaces = changewordN.replace(/\s+/g, '-')
+    let removingDashes = removingSpaces.replace(/\//g, '-')
+    removingDashes = removingDashes.replace(/[áàäâ]/g, 'a')
+                                    .replace(/[éèëê]/g, 'e')
+                                    .replace(/[íìïî]/g, 'i')
+                                    .replace(/[óòöô]/g, 'o')
+                                    .replace(/[úùüû]/g, 'u')
+    return removingDashes
+  }
 
   return(
     <>
@@ -15,7 +28,8 @@ const ImagesCategory = ({ category, firstImage, secondImage } : PropsCategory) =
         <>
           { firstImage?.activeImage ?
             <Image
-            url="/"
+            url={ firstImage?.url ? firstImage?.url :`${normalizeWord(brand)}/${normalizeWord(currentCategory)}/${normalizeWord(firstImage?.title)}`}
+            newTab={ firstImage?.url ? "_blank" : ""}
             src={firstImage?.image}
             title={firstImage?.title}
             description={firstImage?.description}
@@ -24,7 +38,8 @@ const ImagesCategory = ({ category, firstImage, secondImage } : PropsCategory) =
           }
           { secondImage?.activeImage ?
             <Image
-            url="/"
+            url={ secondImage?.url ? secondImage?.url :`${normalizeWord(brand)}/${normalizeWord(currentCategory)}/${normalizeWord(secondImage?.title)}`}
+            newTab={ secondImage?.url ? "_blank" : ""}
             src={secondImage?.image}
             title={secondImage?.title}
             description={secondImage?.description}
@@ -52,8 +67,8 @@ ImagesCategory.schema = {
           },
           title: {
             type: 'string',
-            title: 'Titulo',
-            description: 'Esta desplega el titulo debajo la imagen',
+            title: 'Categoria',
+            description: 'En esta seccion se debe colocar el nombre de la categoria',
           },
           description: {
             type: 'string',

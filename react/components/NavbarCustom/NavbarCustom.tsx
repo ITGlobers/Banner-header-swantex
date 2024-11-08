@@ -52,9 +52,6 @@ const NavbarCustom = ({ brand, children } : Props) => {
 
   return(
     <>
-      {console.log("options =>", options)}
-      {console.log(secondOptions)}
-      {console.log("current =>", currentCategory)}
       <div className={handles["navbar-container"]}>
         {options.map((option: any) =>
           <div className={handles["navbar-item"]} key={option.id}>

@@ -3,7 +3,7 @@ import { useCssHandles } from "vtex.css-handles"
 import { PropsImage } from '../types'
 
 
-const Image = ({url, src, title, description} : PropsImage) => {
+const Image = ({url, newTab, src, title, description} : PropsImage) => {
 
   const CSS_HANDLES = [
     "navbar-menu-image-container",
@@ -16,7 +16,7 @@ const Image = ({url, src, title, description} : PropsImage) => {
   return (
     <>
      <div className={handles["navbar-menu-image-container"]}>
-        <a href={url}>
+        <a href={url} target={newTab}>
           <img src={src} alt={`Imagen-${title}`} />
           <p className={handles["menu-image-title"]}>{title}</p>
           <p className={handles["menu-image-description"]}>{description}</p>

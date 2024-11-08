@@ -19,6 +19,7 @@ export type PropsCategory = {
 
 export type PropsImage = {
   url: string,
+  newTab: string,
   src: string,
   title: string,
   description: string
