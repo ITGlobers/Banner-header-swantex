@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, createContext } from "react"
 import { useCssHandles } from "vtex.css-handles"
 import { getCategories } from "./services/Categories";
 import { Props, Items, OptionsToShow } from "./types";
 import IconMenu from "./components/IconMenu";
 import IconClose from "./components/IconClose";
+
+export const categorySelected = createContext<any>(null);
 
 const NavbarCustom = ({ brand, children } : Props) => {
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -33,10 +35,7 @@ const NavbarCustom = ({ brand, children } : Props) => {
     "navbar-menu__close-button",
     "navbar-item__anchor",
     "close-icon",
-    "navbar-menu-showAll",
-    "navbar-menu-image-container",
-    "menu-image-title",
-    "menu-image-description"
+    "navbar-menu-showAll"
   ] as const
 
   const handles = useCssHandles(CSS_HANDLES)
@@ -55,11 +54,15 @@ const NavbarCustom = ({ brand, children } : Props) => {
     <>
       {console.log("options =>", options)}
       {console.log(secondOptions)}
+      {console.log("current =>", currentCategory)}
       <div className={handles["navbar-container"]}>
         {options.map((option: any) =>
           <div className={handles["navbar-item"]} key={option.id}>
             {option.hasChildren === true ?
-              <button className={handles["navbar-item__button"]} onClick={() => handler(true, option.id)} onMouseEnter={() => handler(true, option.id)}>
+              <button
+              className={handles["navbar-item__button"]}
+              onClick={() => handler(true, option.id)}
+              onMouseEnter={() => handler(true, option.id)}>
                 {option.name} <IconMenu/>
               </button> :
               <a
@@ -89,21 +92,9 @@ const NavbarCustom = ({ brand, children } : Props) => {
               </div>
             </div>
             <div className={handles["navbar-menu-graphic-section"]}>
+              <categorySelected.Provider value={currentCategory?.name} >
                 { children }
-                <div className={handles["navbar-menu-image-container"]}>
-                  <a href="/">
-                    <img src="https://swantex.vtexassets.com/arquivos/1-IMAGEN-CATEGORIA-DESPLEGABLE.jpg" alt="ImageExample" />
-                    <p className={handles["menu-image-title"]}>Tobillera</p>
-                    <p className={handles["menu-image-description"]}>Suave y confortable tobillera Seducción  fabricada en tejido de punto elástico</p>
-                  </a>
-                </div>
-                <div className={handles["navbar-menu-image-container"]}>
-                  <a href="/">
-                    <img src="https://swantex.vtexassets.com/arquivos/2-IMAGEN-CATEGORIA-DESPLEGABLE.jpg" alt="ImageExample" />
-                    <p className={handles["menu-image-title"]}>Tobillera</p>
-                    <p className={handles["menu-image-description"]}>Suave y confortable tobillera Seducción  fabricada en tejido de punto elástico</p>
-                  </a>
-                </div>
+              </categorySelected.Provider>
             </div>
           </div>
         </div>
@@ -122,92 +113,6 @@ NavbarCustom.schema = {
         title: "Marca",
         type: "string",
         description: "Esta propiedad no debe ser movidad ya que determina el menu por cada marca"
-      },
-      graphicSection: {
-        title: 'Seleccion de imagenes por categoria',
-        type: 'object',
-        properties: {
-          firstImage: {
-            title: 'Imagen de seccion',
-            type: 'object',
-            properties: {
-              activeImage:{
-                type: 'boolean',
-                title: 'Activa la imagen 1',
-                default: false,
-              },
-              category:{
-                type: 'string',
-                title: 'Categoria',
-                description: 'Selecciona la categoria correspondiente',
-                enum: ['red', 'blue', 'black']
-              },
-              title: {
-                type: 'string',
-                title: 'Titulo',
-                description: 'Esta desplega el titulo debajo la imagen',
-              },
-              description: {
-                type: 'string',
-                title: 'Descripcion',
-                description: 'Pequeño parrafo de descripcion debajo la imagen',
-              },
-              url:{
-                type: 'string',
-                title: 'URL',
-                description: 'URL opcional (Deshabilita el enlace por defecto)',
-              },
-              image :{
-                title: 'Imagen',
-                default: '',
-                type: 'string',
-                widget: {
-                    "ui:widget": "image-uploader"
-                }
-              },
-            }
-          },
-          secondImage: {
-            title: 'Imagen de seccion',
-            type: 'object',
-            properties: {
-              activeImage:{
-                type: 'boolean',
-                title: 'Activa la imagen 1',
-                default: false,
-              },
-              category:{
-                type: 'string',
-                title: 'Categoria',
-                description: 'Selecciona la categoria correspondiente',
-                enum: ['red', 'blue', 'black']
-              },
-              title: {
-                type: 'string',
-                title: 'Titulo',
-                description: 'Esta desplega el titulo debajo la imagen',
-              },
-              description: {
-                type: 'string',
-                title: 'Descripcion',
-                description: 'Pequeño parrafo de descripcion debajo la imagen',
-              },
-              url:{
-                type: 'string',
-                title: 'URL',
-                description: 'URL opcional (Deshabilita el enlace por defecto)',
-              },
-              image :{
-                title: 'Imagen',
-                default: '',
-                type: 'string',
-                widget: {
-                    "ui:widget": "image-uploader"
-                }
-              },
-            }
-          }
-        }
       }
   }
 }

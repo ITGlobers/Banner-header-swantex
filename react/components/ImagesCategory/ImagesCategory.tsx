@@ -1,39 +1,115 @@
-import React from "react"
+import React, { useState, useContext } from "react"
+import { categorySelected } from "../NavbarCustom/NavbarCustom";
+import Image from "./components/Images";
+import { PropsCategory } from "./types";
 
-const ImagesCategory = () => {
+
+const ImagesCategory = ({ category, firstImage, secondImage } : PropsCategory) => {
+
+  const categoryOnSelected = useContext(categorySelected);
+  const [ currentCategory ] = useState<any>(category)
+
   return(
     <>
-      Images
+      {currentCategory === categoryOnSelected ?
+        <>
+          { firstImage?.activeImage ?
+            <Image
+            url="/"
+            src={firstImage?.image}
+            title={firstImage?.title}
+            description={firstImage?.description}
+            /> :
+            null
+          }
+          { secondImage?.activeImage ?
+            <Image
+            url="/"
+            src={secondImage?.image}
+            title={secondImage?.title}
+            description={secondImage?.description}
+            /> :
+            null
+          }
+        </>
+      : null}
     </>
   )
 }
 
-ImagesCategory.schema ={
-  image: {
-    title: 'Image Prop',
+ImagesCategory.schema = {
+    title: 'Seleccion de imagenes por categoria',
     type: 'object',
     properties: {
-      activeImages:{
-          type: 'boolean',
-          title: 'Activa la imagen',
-          default: false,
-      },
-      category:{
-        type: 'string',
-        title: 'Categoria',
-        description: 'Selecciona la categoria correspondiente',
-        enum: ['red', 'blue', 'black']
-      },
-      image :{
-        title: 'Imagen',
-        default: '',
-        type: 'string',
-        widget: {
-            "ui:widget": "image-uploader"
+      firstImage: {
+        title: 'Imagen de seccion',
+        type: 'object',
+        properties: {
+          activeImage:{
+            type: 'boolean',
+            title: 'Activa la imagen 1',
+            default: false,
+          },
+          title: {
+            type: 'string',
+            title: 'Titulo',
+            description: 'Esta desplega el titulo debajo la imagen',
+          },
+          description: {
+            type: 'string',
+            title: 'Descripcion',
+            description: 'Pequeño parrafo de descripcion debajo la imagen',
+          },
+          url:{
+            type: 'string',
+            title: 'URL',
+            description: 'URL opcional (Deshabilita el enlace por defecto)',
+          },
+          image :{
+            title: 'Imagen',
+            default: '',
+            type: 'string',
+            widget: {
+                "ui:widget": "image-uploader"
+            }
+          },
         }
       },
+      secondImage: {
+        title: 'Imagen de seccion',
+        type: 'object',
+        properties: {
+          activeImage:{
+            type: 'boolean',
+            title: 'Activa la imagen 2',
+            default: false,
+          },
+          title: {
+            type: 'string',
+            title: 'Titulo',
+            description: 'Esta desplega el titulo debajo la imagen',
+          },
+          description: {
+            type: 'string',
+            title: 'Descripcion',
+            description: 'Pequeño parrafo de descripcion debajo la imagen',
+          },
+          url:{
+            type: 'string',
+            title: 'URL',
+            description: 'URL opcional (Deshabilita el enlace por defecto)',
+          },
+          image :{
+            title: 'Imagen',
+            default: '',
+            type: 'string',
+            widget: {
+                "ui:widget": "image-uploader"
+            }
+          },
+        }
+      }
     }
-  }
 }
 
 export default ImagesCategory
