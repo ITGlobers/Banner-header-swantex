@@ -11,5 +11,15 @@
     "component": "ComplementHF",
     "render": "client",
     "composition": "children"
+  },
+  "Navbar-custom": {
+    "component": "NavbarCustom",
+    "render": "client",
+    "composition": "children"
+  },
+  "Image-category": {
+    "component": "ImagesCategory",
+    "render": "client",
+    "composition": "children"
   }
 }

@@ -1,0 +1,26 @@
+query {
+  categories {
+    id
+    name
+    href
+    hasChildren
+    children {
+      id
+      name
+      href
+      hasChildren
+      children {
+        id
+        name
+        href
+        hasChildren
+        children {
+          id
+          name
+          href
+          hasChildren
+        }
+      }
+    }
+  }
+}
