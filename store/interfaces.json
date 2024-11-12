@@ -11,5 +11,10 @@
     "component": "ComplementHF",
     "render": "client",
     "composition": "children"
+  },
+  "BlogVerMas": {
+    "component": "VerMas",
+    "render": "client",
+    "composition": "children"
   }
 }
