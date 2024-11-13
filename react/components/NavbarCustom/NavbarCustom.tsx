@@ -114,7 +114,7 @@ const NavbarCustom = ({ brand, children }: Props) => {
                 <a
                   className={handles['navbar-menu-showAll']}
                   href={currentCategory?.url}
-                >{`Ver todos ${currentCategory?.name}`}</a>
+                >{`Ver todo en ${currentCategory?.name}`}</a>
               </div>
             </div>
             <div className={handles['navbar-menu-graphic-section']}>
