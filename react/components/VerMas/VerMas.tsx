@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import { useCssHandles } from 'vtex.css-handles'
+import '../styles.css'
 
 function VerMas({ children }: any) {
-  const [show, setShow] = useState(false)
-  const CSS_HANDLES = ['HiddenText', 'ShowText']
+  const [show, setShow] = useState(true)
+  const CSS_HANDLES = ['HiddenText', 'ShowText', 'ButtonShowMore']
 
   const handles = useCssHandles(CSS_HANDLES)
 
@@ -11,12 +12,17 @@ function VerMas({ children }: any) {
     setShow(!show)
   }
 
+  const childrenPlus =
+    typeof children === 'string' ? `${children}...` : children
+
   return (
     <>
       <div className={show ? handles.HiddenText : handles.ShowText}>
-        {children}
+        {show ? childrenPlus : children}
       </div>
-      <button onClick={handleChange}>Ver más</button>
+      <button className={handles.ButtonShowMore} onClick={handleChange}>
+        {show ? 'Ver más' : 'Ver menos'}
+      </button>
     </>
   )
 }
