@@ -21,5 +21,10 @@
     "component": "ImagesCategory",
     "render": "client",
     "composition": "children"
+  },
+  "BlogVerMas": {
+    "component": "VerMas",
+    "render": "client",
+    "composition": "children"
   }
 }

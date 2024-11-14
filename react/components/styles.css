@@ -35,9 +35,34 @@
     position: relative;
     text-align: center;
   }
+  .HiddenText{
+    overflow: hidden;
+    height: 377px;
+  }
+  .ButtonShowMore{
+    background: transparent;
+    border: none;
+    margin-top: 1rem;
+    padding: 0;
+    color: #2E98FB;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: 9.5%;
+    text-underline-offset: 20.5%;
+    text-underline-position: from-font;
+    cursor:pointer
+  }
   @media screen and (min-width: 64rem) {
     .containerWhatsapp{
       bottom: 7.5rem;
       right: 5rem;
+    }
+    .HiddenText{
+      height: 277px;
     }
   }

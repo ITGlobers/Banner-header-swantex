@@ -1,3 +1,3 @@
-import ImagesCategory from "./components/ImagesCategory/ImagesCategory"
+import ImagesCategory from './components/ImagesCategory/ImagesCategory'
 
 export default ImagesCategory
