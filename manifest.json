@@ -1,7 +1,7 @@
 {
   "vendor": "swantex",
   "name": "custom-frontend-aplications",
-  "version": "0.1.1-beta.0",
+  "version": "0.1.2-beta.0",
   "title": "custom frontend aplications",
   "description": "Custom aplications",
   "builders": {
