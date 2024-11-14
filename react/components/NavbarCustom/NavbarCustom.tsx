@@ -92,6 +92,7 @@ const NavbarCustom = ({ brand, children }: Props) => {
             ? handles['navbar-slider__open']
             : handles['navbar-slider__close']
         }
+        onMouseLeave={() => handler(false, 0)}
       >
         <div className={handles['navbar-menu-container']}>
           <div className={handles['navbar-menu__close-button']}>
