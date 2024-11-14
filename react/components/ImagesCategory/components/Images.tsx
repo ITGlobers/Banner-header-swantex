@@ -17,8 +17,10 @@ const Image = ({ url, newTab, src, title, description }: PropsImage) => {
       <div className={handles['navbar-menu-image-container']}>
         <a href={url} target={newTab}>
           <img src={src} alt={`Imagen-${title}`} />
-          <p className={handles['menu-image-title']}>{title}</p>
-          <p className={handles['menu-image-description']}>{description}</p>
+          <span className={handles['menu-image-title']}>{title}</span>
+          <span className={handles['menu-image-description']}>
+            {description}
+          </span>
         </a>
       </div>
     </>
