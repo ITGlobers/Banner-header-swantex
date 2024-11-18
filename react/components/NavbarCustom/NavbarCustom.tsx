@@ -58,6 +58,18 @@ const NavbarCustom = ({ brand, children }: Props) => {
     setSecondOptions(optionsToShow[0].children)
   }
 
+  function getPath(url: string) {
+    try {
+      const objUrl = new URL(url)
+
+      return objUrl.pathname
+    } catch (error) {
+      console.error('La URL proporcionada no es válida', error)
+
+      return '/'
+    }
+  }
+
   return (
     <>
       <div className={handles['navbar-container']}>
@@ -78,7 +90,7 @@ const NavbarCustom = ({ brand, children }: Props) => {
                   handler(false, option.id)
                 }}
                 key={option.id}
-                href={option.url}
+                href={getPath(option.url)}
               >
                 {option.name}
               </a>
@@ -107,7 +119,7 @@ const NavbarCustom = ({ brand, children }: Props) => {
             <div className={handles['navbar-menu-categories']}>
               {secondOptions.map((option: ChildrenOptions) => (
                 <div key={option.id}>
-                  <a href={option.url}>{option.name}</a>
+                  <a href={getPath(option.url)}>{option.name}</a>
                 </div>
               ))}
               <div>
