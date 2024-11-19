@@ -1,6 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable react-hooks/exhaustive-deps */
-/* eslint-disable no-console */
 import React, { useState, useContext } from 'react'
 
 import { categorySelected } from '../NavbarCustom/NavbarCustom'
