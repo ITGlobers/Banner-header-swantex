@@ -1,3 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable no-console */
 import React, { useState, useContext } from 'react'
 
 import { categorySelected } from '../NavbarCustom/NavbarCustom'
@@ -14,7 +17,8 @@ const ImagesCategory = ({
   const [currentCategory] = useState<string>(category)
 
   const normalizeWord = (word: string) => {
-    const wordTrimmedAndLowerCase = word.trim().toLowerCase()
+    if (word === undefined) return '/'
+    const wordTrimmedAndLowerCase = word?.trim().toLowerCase()
     const changewordN = wordTrimmedAndLowerCase.replace(/ñ/g, 'n')
     const removingSpaces = changewordN.replace(/\s+/g, '-')
     let removingDashes = removingSpaces.replace(/\//g, '-')
@@ -38,7 +42,7 @@ const ImagesCategory = ({
               url={
                 firstImage?.url
                   ? firstImage?.url
-                  : `${normalizeWord(brand)}/${normalizeWord(
+                  : `/${normalizeWord(brand)}/${normalizeWord(
                       currentCategory
                     )}/${normalizeWord(firstImage?.title)}`
               }
@@ -53,7 +57,7 @@ const ImagesCategory = ({
               url={
                 secondImage?.url
                   ? secondImage?.url
-                  : `${normalizeWord(brand)}/${normalizeWord(
+                  : `/${normalizeWord(brand)}/${normalizeWord(
                       currentCategory
                     )}/${normalizeWord(secondImage?.title)}`
               }
