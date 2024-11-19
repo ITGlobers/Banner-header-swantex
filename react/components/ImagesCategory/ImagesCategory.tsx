@@ -120,8 +120,8 @@ ImagesCategory.schema = {
           default: false,
         },
         title: {
-          type: 'Categoria',
-          title: 'Titulo',
+          type: 'string',
+          title: 'Categoria',
           description:
             'En esta seccion se debe colocar el nombre de la subcategoria',
         },
