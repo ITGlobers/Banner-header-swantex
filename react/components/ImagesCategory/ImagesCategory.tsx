@@ -43,7 +43,7 @@ const ImagesCategory = ({
                       currentCategory
                     )}/${normalizeWord(firstImage?.title)}`
               }
-              newTab={firstImage?.url ? '_blank' : ''}
+              newTab={firstImage?.url ? '' : ''}
               src={firstImage?.image}
               title={firstImage?.title}
               description={firstImage?.description}
@@ -58,7 +58,7 @@ const ImagesCategory = ({
                       currentCategory
                     )}/${normalizeWord(secondImage?.title)}`
               }
-              newTab={secondImage?.url ? '_blank' : ''}
+              newTab={secondImage?.url ? '' : ''}
               src={secondImage?.image}
               title={secondImage?.title}
               description={secondImage?.description}
@@ -87,7 +87,7 @@ ImagesCategory.schema = {
           type: 'string',
           title: 'Categoria',
           description:
-            'En esta seccion se debe colocar el nombre de la categoria',
+            'En esta seccion se debe colocar el nombre de la subcategoria',
         },
         description: {
           type: 'string',
@@ -96,8 +96,9 @@ ImagesCategory.schema = {
         },
         url: {
           type: 'string',
-          title: 'URL',
-          description: 'URL opcional (Deshabilita el enlace por defecto)',
+          title: 'Path',
+          description:
+            'Path de categoria Padre opcional (Deshabilita el enlace por defecto de la subcategoria). Ex. /tall/best-seller',
         },
         image: {
           title: 'Imagen',
@@ -119,9 +120,10 @@ ImagesCategory.schema = {
           default: false,
         },
         title: {
-          type: 'string',
+          type: 'Categoria',
           title: 'Titulo',
-          description: 'Esta desplega el titulo debajo la imagen',
+          description:
+            'En esta seccion se debe colocar el nombre de la subcategoria',
         },
         description: {
           type: 'string',
@@ -130,8 +132,9 @@ ImagesCategory.schema = {
         },
         url: {
           type: 'string',
-          title: 'URL',
-          description: 'URL opcional (Deshabilita el enlace por defecto)',
+          title: 'Path',
+          description:
+            'Path de Categoria Padre opcional (Deshabilita el enlace por defecto de la subcategoria). Ex. /tall/best-seller',
         },
         image: {
           title: 'Imagen',
